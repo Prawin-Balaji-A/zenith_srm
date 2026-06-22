@@ -271,7 +271,11 @@ export default function SolarSystem() {
       mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1
       raycaster.setFromCamera(mouse, camera)
       const hits = raycaster.intersectObjects(raycasterObjects)
-      setHovered(hits.length > 0 ? (hits[0].object.userData.planet as PlanetConfig).name : null)
+      if (hits.length > 0 && hits[0].object.userData.planet) {
+        setHovered((hits[0].object.userData.planet as PlanetConfig).name)
+      } else {
+        setHovered(null)
+      }
     }
 
     renderer.domElement.addEventListener('click', onClick)

@@ -1,5 +1,7 @@
 import { NextRequest } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
 // NASA Horizons API wrapper for planet positions
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl

@@ -1,5 +1,7 @@
 import { NextRequest } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
 // Cache TLE data for 2 hours
 const cache = new Map<string, { data: string; timestamp: number }>()
 const CACHE_TTL = 2 * 60 * 60 * 1000  // 2 hours
