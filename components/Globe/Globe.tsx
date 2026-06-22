@@ -311,6 +311,20 @@ export default function Globe() {
       mouse2.x = ((e.clientX - r.left) / r.width)  * 2 - 1
       mouse2.y = -((e.clientY - r.top)  / r.height) * 2 + 1
       raycaster.setFromCamera(mouse2, camera)
+      
+      // Check satellite hits first
+      raycaster.params.Points.threshold = 0.05
+      const satHits = raycaster.intersectObject(satPoints)
+      if (satHits.length > 0 && satHits[0].index !== undefined) {
+        const sats = satellitesRef.current.slice(0, MAX_SATS)
+        const clickedSat = sats[satHits[0].index]
+        if (clickedSat) {
+          useZenithStore.getState().setSelectedObject(clickedSat)
+          return // don't drop a pin if we clicked a satellite
+        }
+      }
+
+      // If no satellite clicked, drop a pin
       const hits = raycaster.intersectObject(earth)
       if (hits.length > 0) {
         // Point is in world space, we need local space relative to Earth
@@ -320,7 +334,8 @@ export default function Globe() {
         let lng = theta + 90
         if (lng > 180) lng -= 360
         if (lng < -180) lng += 360
-        setLocation({ lat, lng, name: `${lat.toFixed(2)}°, ${lng.toFixed(2)}°` })
+        useZenithStore.getState().setLocation({ lat, lng, name: `${lat.toFixed(2)}°, ${lng.toFixed(2)}°` })
+        useZenithStore.getState().setSelectedObject(null) // deselect sat when clicking earth
       }
     }
 

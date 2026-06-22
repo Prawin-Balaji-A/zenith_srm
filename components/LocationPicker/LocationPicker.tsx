@@ -60,6 +60,32 @@ export default function LocationPicker() {
     setLocation({ lat: loc.lat, lng: loc.lng, name: loc.name })
   }
 
+  const locateMe = () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation is not supported by your browser")
+      return
+    }
+    setSearching(true)
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude } = pos.coords
+        try {
+          const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`, { headers: { 'Accept-Language': 'en' } })
+          const data = await res.json()
+          const city = data.address?.city || data.address?.town || data.address?.village || data.address?.country || 'My Location'
+          setLocation({ lat: latitude, lng: longitude, name: city })
+        } catch {
+          setLocation({ lat: latitude, lng: longitude, name: 'My Location' })
+        }
+        setSearching(false)
+      },
+      () => {
+        alert("Unable to retrieve your location. Please check your browser permissions.")
+        setSearching(false)
+      }
+    )
+  }
+
   return (
     <div className={styles.wrapper} id="location-picker">
       <div className={styles.currentLocation}>
@@ -74,19 +100,29 @@ export default function LocationPicker() {
       </div>
 
       <div className={styles.searchWrapper}>
-        <div className={styles.searchInputWrapper}>
-          <span className={styles.searchIcon}>🔍</span>
-          <input
-            type="text"
-            className={styles.searchInput}
-            placeholder="Search any city..."
-            value={query}
-            onChange={handleInput}
-            id="location-search-input"
-            aria-label="Search for a location"
-            autoComplete="off"
-          />
-          {searching && <span className={styles.spinner} aria-label="Searching" />}
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <div className={styles.searchInputWrapper} style={{ flex: 1 }}>
+            <span className={styles.searchIcon}>🔍</span>
+            <input
+              type="text"
+              className={styles.searchInput}
+              placeholder="Search any city..."
+              value={query}
+              onChange={handleInput}
+              id="location-search-input"
+              aria-label="Search for a location"
+              autoComplete="off"
+            />
+            {searching && <span className={styles.spinner} aria-label="Searching" />}
+          </div>
+          <button 
+            onClick={locateMe} 
+            className={styles.quickBtn} 
+            style={{ background: 'rgba(0, 245, 255, 0.15)', color: '#00f5ff', border: '1px solid rgba(0, 245, 255, 0.4)', width: 'auto', padding: '0 12px', flexShrink: 0, fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }} 
+            title="Use my GPS Location"
+          >
+            🎯
+          </button>
         </div>
 
         {results.length > 0 && (
