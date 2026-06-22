@@ -1,0 +1,86 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #475569;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #64748b;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filterBtn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+}
+
+.filterBtnActive {
+  font-weight: 600;
+}
+
+.filterIcon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.filterLabel {
+  font-size: 0.75rem;
+}
+
+/* Special toggles */
+.specials {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.specialBtn {
+  padding: 6px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: #475569;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.specialBtn:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+}
+
+.specialBtnActive {
+  border-color: rgba(0, 245, 255, 0.3);
+  color: #00f5ff;
+  background: rgba(0, 245, 255, 0.07);
+}

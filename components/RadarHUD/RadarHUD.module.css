@@ -1,0 +1,30 @@
+.radarWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.radarCanvas {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 50%;
+  cursor: crosshair;
+  box-shadow:
+    0 0 40px rgba(0, 245, 255, 0.1),
+    0 0 80px rgba(0, 245, 255, 0.05),
+    inset 0 0 40px rgba(0, 245, 255, 0.05);
+}
+
+.radarLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.blipCount {
+  opacity: 0.6;
+}

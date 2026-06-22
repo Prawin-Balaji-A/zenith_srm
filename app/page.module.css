@@ -1,142 +1,389 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
-}
-
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
 .main {
-  display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
-}
-
-.intro {
+  position: relative;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+  z-index: 1;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+/* ============================================================
+   HERO BANNER
+   ============================================================ */
+.heroBanner {
+  position: relative;
+  z-index: 2;
+  padding: 100px 24px 0;
+  text-align: center;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.heroBannerInner {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
+.heroLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(0, 245, 255, 0.8);
+  margin-bottom: 16px;
+  background: rgba(0, 245, 255, 0.05);
+  border: 1px solid rgba(0, 245, 255, 0.15);
+  border-radius: 9999px;
+  padding: 6px 16px;
 }
 
-.ctas {
+.heroTitle {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  color: #e2e8f0;
+  letter-spacing: -0.02em;
+}
+
+.heroSubtitle {
+  font-size: 1rem;
+  color: #64748b;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+
+/* Stats bar */
+.statsBar {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.statChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 245, 255, 0.15);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  color: rgba(0, 245, 255, 0.85);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   DASHBOARD — THREE COLUMN LAYOUT
+   ============================================================ */
+.dashboard {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 300px 1fr 300px;
+  grid-template-rows: 1fr;
   gap: 16px;
-  font-size: 14px;
+  padding: 16px 16px 0;
+  flex: 1;
+  min-height: 0;
+  height: calc(100vh - 260px);
 }
 
-.ctas a {
+/* ============================================================
+   PANELS — Common
+   ============================================================ */
+.panel {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panelTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+  font-family: 'Space Mono', monospace;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   SIDEBARS
+   ============================================================ */
+.sidebar, .rightSidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  padding-bottom: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 245, 255, 0.15) transparent;
+}
+
+.sidebar::-webkit-scrollbar,
+.rightSidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb,
+.rightSidebar::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 255, 0.15);
+  border-radius: 9999px;
+}
+
+/* ============================================================
+   ASTRONAUT WRAPPER
+   ============================================================ */
+.astronautWrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  padding: 16px 0;
+  margin-top: auto;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
+/* ============================================================
+   CENTER VIEW
+   ============================================================ */
+.center {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.radarLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.radarMain {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Standard viz panel - flex child inside radarLayout */
+.vizPanel {
+  flex: 1;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 12px;
+}
+
+/* Full height panel for Globe and Solar System */
+.vizPanelFull {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  padding: 8px;
+}
+
+/* ============================================================
+   ISS STATS
+   ============================================================ */
+.issStats {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.issRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
+.issRow:last-of-type { border-bottom: none; }
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+.issLabel {
+  font-size: 0.7rem;
+  color: #475569;
+  font-family: 'Space Mono', monospace;
+}
+
+.issVal {
+  font-size: 0.75rem;
+  color: #00f5ff;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+}
+
+.issProgress {
+  margin-top: 4px;
+}
+
+.issProgressLabel {
+  font-size: 0.65rem;
+  color: #475569;
+  font-family: 'Space Mono', monospace;
+  margin-bottom: 6px;
+}
+
+.issProgressTrack {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.issVisible {
+  margin-top: 6px;
+  padding: 8px 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 10px;
+  font-size: 0.75rem;
+  color: #10b981;
+  font-weight: 600;
+  text-align: center;
+  animation: pulse-live 2s infinite;
+}
+
+/* ============================================================
+   COSMIC CARDS
+   ============================================================ */
+.cosmicCards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cosmicCard {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  transition: all 0.2s;
+  cursor: default;
+}
+
+.cosmicCard:hover {
+  background: rgba(0, 245, 255, 0.04);
+  border-color: rgba(0, 245, 255, 0.12);
+}
+
+.cosmicIcon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.cosmicContent { flex: 1; }
+
+.cosmicDate {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: #7c3aed;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 3px;
+}
+
+.cosmicTitle {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #c8d8e8;
+  margin-bottom: 4px;
+}
+
+.cosmicDesc {
+  font-size: 0.7rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px 24px;
+  margin-top: 16px;
+}
+
+.footerContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: #334155;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.footerDivider {
+  color: #1e293b;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1200px) {
+  .dashboard {
+    grid-template-columns: 260px 1fr 260px;
   }
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+@media (max-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+    overflow: visible;
   }
 
-  .intro {
-    gap: 16px;
-  }
+  .sidebar { order: 2; }
+  .center  { order: 1; min-height: 500px; }
+  .rightSidebar { order: 3; }
 
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
+  .vizPanel { min-height: 450px; }
+  .radarMain { min-height: 350px; }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+@media (max-width: 768px) {
+  .heroBanner { padding-top: 80px; }
+  .heroTitle { font-size: 2rem; }
+
+  .dashboard {
+    padding: 12px;
+    gap: 10px;
   }
 
-  .page {
-    --background: #000;
-    --foreground: #000;
+  .panel { padding: 14px; }
 
-    --text-primary: #ededed;
-    --text-secondary: #999;
+  .vizPanel { min-height: 350px; }
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+  .footerContent { font-size: 0.6rem; }
 }

@@ -1,0 +1,134 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.offsetBadge {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #00f5ff;
+  background: rgba(0, 245, 255, 0.1);
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  border-radius: 9999px;
+  padding: 3px 10px;
+}
+
+.timeDisplay {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 12px;
+  word-break: break-all;
+}
+
+/* Slider */
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sliderMin, .sliderMax {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: #475569;
+  flex-shrink: 0;
+}
+
+.slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 245, 255, 0.6),
+    rgba(124, 58, 237, 0.6)
+  );
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00f5ff;
+  border: 2px solid #020818;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+  cursor: grab;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.2);
+  box-shadow: 0 0 16px rgba(0, 245, 255, 0.9);
+}
+
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #00f5ff;
+  border: 2px solid #020818;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+  cursor: grab;
+}
+
+/* Quick times */
+.quickTimes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.quickBtn {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #64748b;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.quickBtn:hover {
+  background: rgba(0, 245, 255, 0.06);
+  border-color: rgba(0, 245, 255, 0.2);
+  color: #94a3b8;
+}
+
+.quickBtnActive {
+  background: rgba(0, 245, 255, 0.12);
+  border-color: rgba(0, 245, 255, 0.35);
+  color: #00f5ff;
+}
+
+.hint {
+  font-size: 0.7rem;
+  color: #475569;
+  font-style: italic;
+  line-height: 1.4;
+}
