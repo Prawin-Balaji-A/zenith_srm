@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import dynamic from 'next/dynamic'
+import nextDynamic from 'next/dynamic'
 
 export const dynamic = 'force-dynamic'
 
@@ -10,17 +10,17 @@ import { useSatelliteData } from '@/lib/useSatelliteData'
 import styles from './page.module.css'
 
 // Dynamic imports for Three.js / browser-only components
-const Starfield      = dynamic(() => import('@/components/Starfield/Starfield'),          { ssr: false })
-const Globe          = dynamic(() => import('@/components/Globe/Globe'),                  { ssr: false })
-const SolarSystem    = dynamic(() => import('@/components/SolarSystem/SolarSystem'),      { ssr: false })
-const RadarHUD       = dynamic(() => import('@/components/RadarHUD/RadarHUD'),            { ssr: false })
-const Navbar         = dynamic(() => import('@/components/Navbar/Navbar'),                { ssr: false })
-const Astronaut      = dynamic(() => import('@/components/Astronaut/Astronaut'),          { ssr: false })
-const LocationPicker = dynamic(() => import('@/components/LocationPicker/LocationPicker'),{ ssr: false })
-const ObjectPanel    = dynamic(() => import('@/components/ObjectPanel/ObjectPanel'),      { ssr: false })
-const SkyScore       = dynamic(() => import('@/components/SkyScore/SkyScore'),            { ssr: false })
-const FilterBar      = dynamic(() => import('@/components/FilterBar/FilterBar'),          { ssr: false })
-const TimeMachine    = dynamic(() => import('@/components/TimeMachine/TimeMachine'),      { ssr: false })
+const Starfield      = nextDynamic(() => import('@/components/Starfield/Starfield'),          { ssr: false })
+const Globe          = nextDynamic(() => import('@/components/Globe/Globe'),                  { ssr: false })
+const SolarSystem    = nextDynamic(() => import('@/components/SolarSystem/SolarSystem'),      { ssr: false })
+const RadarHUD       = nextDynamic(() => import('@/components/RadarHUD/RadarHUD'),            { ssr: false })
+const Navbar         = nextDynamic(() => import('@/components/Navbar/Navbar'),                { ssr: false })
+const Astronaut      = nextDynamic(() => import('@/components/Astronaut/Astronaut'),          { ssr: false })
+const LocationPicker = nextDynamic(() => import('@/components/LocationPicker/LocationPicker'),{ ssr: false })
+const ObjectPanel    = nextDynamic(() => import('@/components/ObjectPanel/ObjectPanel'),      { ssr: false })
+const SkyScore       = nextDynamic(() => import('@/components/SkyScore/SkyScore'),            { ssr: false })
+const FilterBar      = nextDynamic(() => import('@/components/FilterBar/FilterBar'),          { ssr: false })
+const TimeMachine    = nextDynamic(() => import('@/components/TimeMachine/TimeMachine'),      { ssr: false })
 
 export default function Home() {
   const { activeView, satellites, isLoading } = useZenithStore()
